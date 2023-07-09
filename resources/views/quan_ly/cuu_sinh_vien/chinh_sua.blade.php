@@ -8,7 +8,7 @@
 @section('breadcrumb')
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
             <li class="breadcrumb-item"><a href="/cuu_sinh_vien">Danh sách cựu sinh viên</a></li>
             <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa</li>
         </ol>
@@ -23,8 +23,9 @@
             </h3>
         </div>
 
-        <form method="PUT" action="{{route('cuu_sinh_vien.update', $id)}}" autocomplete="on">
+        <form method="POST" action="{{route('cuu_sinh_vien.update', $id)}}" autocomplete="on">
             @csrf
+            @method('PUT')
             <div class="card-body">
                 <div class="form-group row">
                     <label for="ma_sinh_vien" class="col-sm-2 col-form-label">Mã sinh viên
@@ -33,7 +34,7 @@
                         </svg>)
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="ma_sinh_vien" id="ma_sinh_vien" value="{{$csv[0]->ma_sinh_vien}}" disabled>
+                        <input type="text" class="form-control" name="ma_sinh_vien" id="ma_sinh_vien" value="{{$csv[0]->ma_sinh_vien}}">
                     </div>
                 </div>
 
@@ -44,7 +45,7 @@
                         </svg>)
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="ho_ten" id="ho_ten" value="{{$csv[0]->ho_ten}}" disabled>
+                        <input type="text" class="form-control" name="ho_ten" id="ho_ten" value="{{$csv[0]->ho_ten}}">
                     </div>
                 </div>
 
@@ -55,7 +56,7 @@
                         </svg>)
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="ngay_sinh" id="ngay_sinh" value="{{$csv[0]->ngay_sinh}}" disabled>
+                        <input type="text" class="form-control" name="ngay_sinh" id="ngay_sinh" value="{{$csv[0]->ngay_sinh}}">
                     </div>
                 </div>
 
@@ -67,7 +68,7 @@
                         </svg>)
                     </label>
                     <div class="col-sm-10">
-                        <input value="1" type="text" class="form-control" name="ma_chuyen_nganh" id="ma_chuyen_nganh" value="{{$csv[0]->ma_chuyen_nganh}}" disabled>
+                        <input value="1" type="text" class="form-control" name="ma_chuyen_nganh" id="ma_chuyen_nganh" value="{{$csv[0]->ma_chuyen_nganh}}">
                     </div>
                 </div>
 
@@ -78,7 +79,7 @@
                         </svg>)
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="ma_lop" id="ma_lop" value="{{$csv[0]->ma_lop}}" disabled>
+                        <input type="text" class="form-control" name="ma_lop" id="ma_lop" value="{{$csv[0]->ma_lop}}">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -91,14 +92,14 @@
                         <div class="col-sm-6">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="gioi_tinh"
-                                       @if($csv[0]->gioi_tinh == '0') checked @endif disabled>
+                                       @if($csv[0]->gioi_tinh == '0') checked @endif >
                                 <label class="form-check-label">Nam</label>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="gioi_tinh"
-                                       @if($csv[0]->gioi_tinh == '1') checked @endif disabled>
+                                       @if($csv[0]->gioi_tinh == '1') checked @endif>
                                 <label class="form-check-label">Nữ</label>
                             </div>
                         </div>
@@ -108,26 +109,26 @@
                 <div class="form-group row">
                     <label for="email_sinh_vien" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="email_sinh_vien" id="email_sinh_vien" value="{{$csv[0]->email_sinh_vien}}" disabled>
+                        <input type="text" class="form-control" name="email_sinh_vien" id="email_sinh_vien" value="{{$csv[0]->email_sinh_vien}}">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="dien_thoai_ca_nhan" class="col-sm-2 col-form-label">Điện thoại cá nhân</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="dien_thoai_ca_nhan" id="dien_thoai_ca_nhan" value="{{$csv[0]->dien_thoai_ca_nhan}}" disabled>
+                        <input type="text" class="form-control" name="dien_thoai_ca_nhan" id="dien_thoai_ca_nhan" value="{{$csv[0]->dien_thoai_ca_nhan}}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="dien_thoai_gia_dinh" class="col-sm-2 col-form-label">Điện thoại gia đình</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="dien_thoai_gia_dinh" id="dien_thoai_gia_dinh" value="{{$csv[0]->dien_thoai_gia_dinh}}" disabled>
+                        <input type="text" class="form-control" name="dien_thoai_gia_dinh" id="dien_thoai_gia_dinh" value="{{$csv[0]->dien_thoai_gia_dinh}}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="dia_chi" class="col-sm-2 col-form-label">Địa chỉ liên hệ</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="dia_chi" id="dia_chi" value="{{$csv[0]->dia_chi}}" disabled>
+                        <input type="text" class="form-control" name="dia_chi" id="dia_chi" value="{{$csv[0]->dia_chi}}">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -135,14 +136,14 @@
                     <div class="col-sm-10">
                         <div class="col-sm-6">
                             <div class="form-check">
-                                <input class="form-check-input c-test" type="radio" name="viec_lam"
+                                <input class="form-check-input c-test" type="radio" name="viec_lam" value="{{$csv_j[0]->viec_lam}}"
                                        @if($csv_j[0]->viec_lam == '0') checked @endif>
                                 <label class="form-check-label" >Chưa có việc làm</label>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="viec_lam"
+                                <input class="form-check-input" type="radio" name="viec_lam" value="{{$csv_j[0]->viec_lam}}"
                                        @if($csv_j[0]->viec_lam == '1') checked @endif>
                                 <label class="form-check-label">Đã có việc làm</label>
                             </div>
@@ -177,8 +178,8 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-info">Tạo</button>
-                <a href="/cuu_sinh_vien" type="button" class="btn btn-default float-right">Hủy</a>
+                <button href="{{route('cuu_sinh_vien.update', $csv_j[0]->id)}}" type="submit" class="btn btn-primary">Cập nhật</button>
+                <button href="/cuu_sinh_vien" type="button" class="btn btn-default float-right">Hủy</button>
             </div>
         </form>
     </div>

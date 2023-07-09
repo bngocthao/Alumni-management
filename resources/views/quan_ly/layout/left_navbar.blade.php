@@ -17,42 +17,50 @@
             </div>
         </div>
 
-        <!-- SidebarSearch Form -->
-{{--        <div class="form-inline">--}}
-{{--            <div class="input-group" data-widget="sidebar-search">--}}
-{{--                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">--}}
-{{--                <div class="input-group-append">--}}
-{{--                    <button class="btn btn-sidebar">--}}
-{{--                        <i class="nav-icon fas fa-search"></i>--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="{{route('cuu_sinh_vien.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                <li class="nav-item menu-is-opening menu-open">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-friends"></i>
+                        &nbsp;
                         <p>
-                            Danh sách cựu sinh viên
+                            Quản lý cựu sinh viên
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview" style="display: block;">
+                        <li class="nav-item">
+                            <a href="{{route('cuu_sinh_vien.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Csv và công việc hiện tại
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="../../index2.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách cựu sinh viên</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href='{{route('chuyen_nganh.index')}}' class="nav-link">
-                        <i class="nav-icon fas fa-door-open"></i>
+{{--                        <i class="nav-icon fas fa-door-open"></i>--}}
+                        <i class="nav-icon fas fa-folder-open"></i>
                         <p>
                             Danh sách chuyên ngành
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href=#" class="nav-link">
-                        <i class="nav-icon fas fa-door-closed"></i>
+                    <a href="{{route('don_vi.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-folder-open"></i>
                         <p>
                             Danh sách đơn vị
                         </p>
@@ -60,7 +68,7 @@
                 </li>
                 <li class="nav-item">
                     <a href=#" class="nav-link">
-                        <i class="nav-icon fas fa-user-friends"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
                             Danh sách tài khoản
                         </p>

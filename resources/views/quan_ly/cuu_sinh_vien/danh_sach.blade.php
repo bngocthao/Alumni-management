@@ -16,7 +16,7 @@
 @section('breadcrumb')
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
             <li class="breadcrumb-item active" aria-current="page">Danh sách cựu sinh viên</li>
         </ol>
     </div>
@@ -75,10 +75,35 @@
                         <td>{{$usr_j->ten_don_vi}}</td>
                         <td>{{$usr_j->dia_chi_don_vi}}</td>
                         <td>{{$usr_j->don_vi_thuoc_tinh_thanh}}</td>
-                        <td style="text-align: center;">
-                            <a href="{{route('cuu_sinh_vien.edit', $usr_j->id)}}" type="button" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
-                            &nbsp;
-                            <a href="{{route('cuu_sinh_vien.destroy', $usr->id)}}" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <td >
+{{--                            <a href="{{route('cuu_sinh_vien.edit', $usr_j->id)}}" type="button" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>--}}
+{{--                            &nbsp;--}}
+{{--                            <a href="{{route('cuu_sinh_vien.destroy', $usr->id)}}" type="submit" onclick="return confirm('Bạn có muốn xóa ?')">--}}
+{{--                                <form action="{{route('cuu_sinh_vien.destroy', $usr->id)}}" method="POST" class="tabledit-edit-button btn btn primary waves-effect waves-light float-left">--}}
+{{--                                    @csrf--}}
+{{--                                    @method('DELETE')--}}
+{{--                                    <button class="btn btn-danger btn " type="submit">--}}
+{{--                                        <i class="fas fa-trash"></i>--}}
+{{--                                    </button>--}}
+{{--                                </form>--}}
+{{--                            </a>--}}
+                            <a href="{{route('cuu_sinh_vien.edit', $usr_j->id)}}">
+                                <form action="{{route('cuu_sinh_vien.edit', $usr_j->id)}}" class="tabledit-edit-button btn btn primary waves-effect waves-light">
+                                    @csrf
+                                    @method('GET')
+                                    <button class="btn btn-primary btn" type="submit" id="del-confirm">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                </form></a>
+                            <a href="{{route('cuu_sinh_vien.destroy', $usr_j->id)}}"  onclick="return confirm('Bạn có muốn xóa ?')">
+                                <form action="{{route('cuu_sinh_vien.destroy', $usr_j->id)}}" method="post" class="tabledit-edit-button btn btn primary waves-effect waves-light float-left">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn" type="submit">
+                                        <i class="fas fa-trash"></i></button>
+                                </form>
+                            </a>
+{{--                            <a href="{{route('cuu_sinh_vien.destroy', $usr->id)}}" type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></a>--}}
                         </td>
                     </tr>
                 @endforeach
@@ -148,4 +173,5 @@
             });
         });
     </script>
+
 @endsection

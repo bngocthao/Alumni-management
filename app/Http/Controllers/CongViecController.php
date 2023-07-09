@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CongViecController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display users index which onclick showing job list.
      */
     public function index()
     {

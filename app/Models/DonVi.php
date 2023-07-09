@@ -12,6 +12,7 @@ class DonVi extends Model
 
     protected $table = 'don_vi';
     protected $fillable = [
+        'ma_don_vi',
         'ten_don_vi',
     ];
     public function chuyen_nganh(){

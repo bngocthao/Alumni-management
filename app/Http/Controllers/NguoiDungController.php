@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CongViec;
 use App\Models\NguoiDung;
 use Illuminate\Http\Request;
+use PhpParser\Node\Scalar\String_;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class NguoiDungController extends Controller
@@ -43,7 +44,7 @@ class NguoiDungController extends Controller
         $save_usr = NguoiDung::create($request->all());
         $save_wk = CongViec::create($request->all());
 
-        if (!$save_usr && $save_wk) {
+        if (!$save_usr || !$save_wk) {
             alert()->error('Tạo thất bại');
         }else
             alert()->success('Tạo thành công');
@@ -80,16 +81,30 @@ class NguoiDungController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, NguoiDung $nguoiDung)
+    public function update(Request $request,String $id)
     {
-        //
+        $update = CongViec::find($id)->update($request->all());
+
+        if ($update){
+            alert()->success('Cập nhật thành công');
+        }else
+            alert()->success('Cập nhật thất bại');
+
+        return redirect()->intended('/cuu_sinh_vien');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(NguoiDung $nguoiDung)
+    public function destroy(String $id)
     {
-        //
+        $delete = CongViec::find($id)->delete();
+
+        if ($delete){
+            alert()->success('Xóa thành công');
+        }else
+            alert()->success('Xóa thất bại');
+
+        return redirect()->intended('/cuu_sinh_vien');
     }
 }

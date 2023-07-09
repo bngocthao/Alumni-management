@@ -12,7 +12,13 @@ class DonViController extends Controller
      */
     public function index()
     {
-        //
+        $don_vi = DonVi::all();
+
+        $context = [
+            'don_vi' => $don_vi,
+        ];
+
+        return view('quan_ly.don_vi.danh_sach', $context);
     }
 
     /**
@@ -20,7 +26,7 @@ class DonViController extends Controller
      */
     public function create()
     {
-        //
+        return view('quan_ly.don_vi.form_them');
     }
 
     /**
@@ -28,7 +34,14 @@ class DonViController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $don_vi = DonVi::create($request->all());
+
+        if (!$don_vi) {
+            alert()->error('Tạo thất bại');
+        }else
+            alert()->success('Tạo thành công');
+
+        return redirect()->intended('/don_vi');
     }
 
     /**
@@ -42,24 +55,45 @@ class DonViController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DonVi $donVi)
+    public function edit(String $id)
     {
-        //
+        $don_vi = DonVi::find($id);
+
+        $context = [
+            'id' => $id,
+            'don_vi' => $don_vi,
+        ];
+
+        return view('quan_ly.don_vi.chinh_sua', $context);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DonVi $donVi)
+    public function update(Request $request,String $id)
     {
-        //
+        $update = DonVi::find($id)->update($request->all());
+
+        if ($update){
+            alert()->success('Cập nhật thành công');
+        }else
+            alert()->success('Cập nhật thất bại');
+
+        return redirect()->intended('/don_vi');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DonVi $donVi)
+    public function destroy(String $id)
     {
-        //
+        $delete = DonVi::find($id)->delete();
+
+        if ($delete){
+            alert()->success('Xóa thành công');
+        }else
+            alert()->success('Xóa thất bại');
+
+        return redirect()->intended('/don_vi');
     }
 }
